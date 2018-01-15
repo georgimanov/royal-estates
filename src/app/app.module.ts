@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { LocationsPage } from '../pages/locations/locations';
 import { EstatesPage } from '../pages/estates/estates';
 import { EstateHomePage } from '../pages/estate-home/estate-home';
+import { SavedEstatesListPage } from '../pages/saved-estates-list/saved-estates-list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,7 +20,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListPage,
     LocationsPage,
     EstatesPage,
-    EstateHomePage
+    EstateHomePage,
+    SavedEstatesListPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListPage,
     LocationsPage,
     EstatesPage,
-    EstateHomePage
+    EstateHomePage,
+    SavedEstatesListPage
   ],
   providers: [
     StatusBar,
