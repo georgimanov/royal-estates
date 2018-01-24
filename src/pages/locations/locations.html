@@ -7,12 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Locations</ion-title>
+    <ion-title>Select a Location</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <button ion-item *ngFor="let item of locations" (click)="itemTapped($event, item)">
+    {{item.name}}
+  </button>
 </ion-content>

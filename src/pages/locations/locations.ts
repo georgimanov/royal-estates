@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { EstatesApiProvider } from '../../providers/estates-api';
+import { EstatesPage } from '../pages';
 
-/**
- * Generated class for the LocationsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+
 
 @IonicPage()
 @Component({
@@ -15,14 +13,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LocationsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  locations: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public estatesApi: EstatesApiProvider, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LocationsPage');
+    let loader = this.loadingCtrl.create({content: 'Getting locations...'});
+    loader.present().then(() => {
+      this.estatesApi.getLocations().subscribe(
+        locations => {
+          this.locations = locations;
+          loader.dismiss();
+        }
+      );
+    });
   }
 
-  goBack(){
-    this.navCtrl.pop();
+  itemTapped($event, item) {
+    this.navCtrl.push(EstatesPage, item);
   }
 }
