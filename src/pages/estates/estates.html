@@ -10,9 +10,27 @@
     <ion-title>Estates Page</ion-title>
   </ion-navbar>
 
+  <ion-toolbar>
+  </ion-toolbar>
+
 </ion-header>
 
 
 <ion-content padding>
+  <ion-item-group *ngFor="let arr of estates">
+    <ion-item-divider color="secondary" >{{arr.region}}</ion-item-divider>
+      <button ion-item *ngFor="let estate of arr.locationEstates" (click)="itemTapped($event, estate)">
 
+          <ion-card>
+          <ion-card-header>
+            {{estate.type}}
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img width="80" height="80" src='{{estate.image}}'></ion-img>
+          </ion-card-content>
+          </ion-card>
+
+        
+      </button>
+  </ion-item-group>
 </ion-content>

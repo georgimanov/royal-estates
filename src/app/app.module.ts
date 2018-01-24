@@ -11,6 +11,9 @@ import { LocationsPage } from '../pages/locations/locations';
 import { EstatesPage } from '../pages/estates/estates';
 import { EstateHomePage } from '../pages/estate-home/estate-home';
 import { SavedEstatesListPage } from '../pages/saved-estates-list/saved-estates-list';
+import { EstateDetailsPage } from '../pages/estate-details/estate-details';
+import { EstateMapPage } from '../pages/estate-map/estate-map';
+import { EstateSimilarPage } from '../pages/estate-similar/estate-similar';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,7 +29,10 @@ import { UserSettingsProvider } from '../providers/user-settings';
     LocationsPage,
     EstatesPage,
     EstateHomePage,
-    SavedEstatesListPage
+    SavedEstatesListPage,
+    EstateDetailsPage,
+    EstateMapPage,
+    EstateSimilarPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,10 @@ import { UserSettingsProvider } from '../providers/user-settings';
     LocationsPage,
     EstatesPage,
     EstateHomePage,
-    SavedEstatesListPage
+    SavedEstatesListPage,
+    EstateDetailsPage,
+    EstateMapPage,
+    EstateSimilarPage
   ],
   providers: [
     StatusBar,
