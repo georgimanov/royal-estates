@@ -21,7 +21,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { EstatesApiProvider } from '../providers/estates-api';
 import { UserSettingsProvider } from '../providers/user-settings';
-
+import { GoogleMaps } from '@ionic-native/google-maps';
+ 
 @NgModule({
   declarations: [
     MyApp,
@@ -44,6 +45,10 @@ import { UserSettingsProvider } from '../providers/user-settings';
          driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
     AgmCoreModule.forRoot({
+      apiKey: "AIzaSyBtLjPSymSciWcuNnvRfBYO5_nv9Cwma6A"
+    })
+    ,
+    AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBtLjPSymSciWcuNnvRfBYO5_nv9Cwma6A'
     })
   ],
@@ -65,7 +70,8 @@ import { UserSettingsProvider } from '../providers/user-settings';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EstatesApiProvider,
-    UserSettingsProvider
+    UserSettingsProvider,
+    GoogleMaps
   ]
 })
 export class AppModule {}
