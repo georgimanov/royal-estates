@@ -14,12 +14,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'estate-details.html',
 })
 export class EstateDetailsPage {
+  estate: any = {}; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.estate = this.navParams.get('estate');
   }
 
   ionViewDidLoad() {
+  // ??    this.estate = this.navParams.get('estate');
+
     console.log('ionViewDidLoad EstateDetailsPage');
   }
-
 }
