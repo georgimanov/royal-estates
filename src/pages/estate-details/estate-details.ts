@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the EstateDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-estate-details',
@@ -15,14 +8,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EstateDetailsPage {
   estate: any = {}; 
-
+  isFollowing: boolean = false; 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.estate = this.navParams.get('estate');
   }
 
   ionViewDidLoad() {
-  // ??    this.estate = this.navParams.get('estate');
+    this.estate = this.navParams.get('estate');
 
     console.log('ionViewDidLoad EstateDetailsPage');
+  }
+
+  toggleFavorites(){
+      this.isFollowing = !this.isFollowing;
   }
 }

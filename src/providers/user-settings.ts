@@ -6,7 +6,6 @@ import { Events } from 'ionic-angular';
 export class UserSettingsProvider {
 
   constructor(public storage: Storage, public events: Events) {
-   
   }
 
   favoriteEstate(estate, locationId, locationName) {
@@ -35,5 +34,4 @@ export class UserSettingsProvider {
         return resolve(results);
     });
   }
-
 }

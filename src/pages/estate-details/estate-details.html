@@ -12,9 +12,13 @@
         <img src="{{estate.image}}"/>
         <ion-card-content>
           <ion-card-title>
-              <button ion-button icon-start outline>
+              <button ion-button icon-start outline (click)="toggleFavorites()" *ngIf="!isFollowing">
                 <ion-icon name="bookmark"></ion-icon>
                   SAVE TO MY ESTATES
+              </button>
+              <button ion-button icon-start (click)="toggleFavorites()" *ngIf="isFollowing">
+                  <ion-icon name="bookmark"></ion-icon>
+                  SAVED TO MY ESTATES
               </button>
           </ion-card-title>
           <ion-grid>
