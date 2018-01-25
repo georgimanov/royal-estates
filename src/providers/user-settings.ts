@@ -30,7 +30,9 @@ export class UserSettingsProvider {
         this.storage.forEach(data => {
             results.push(JSON.parse(data));
         });
+
         return resolve(results);
     });
   }
+  
 }

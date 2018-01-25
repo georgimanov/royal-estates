@@ -11,13 +11,39 @@
 
     <h2>My estates</h2>
     
-    <ion-card>
+    <ion-card *ngIf="favoriteEstates.length == 0">
+      <ion-card-header>
+          No Saved Estates
+      </ion-card-header>
+      <ion-card-content>
+         To save an estate, select a location, then you can save estates from thier estate overview page.
+        <button ion-button (click)='goToLocationsPage()' full>
+            <ion-icon name="search"></ion-icon>
+            Find a location
+        </button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="favoriteEstates.length > 0">
         <ion-card-header>
             Saved Estates
         </ion-card-header>
         <ion-card-content>
-          <p>List my estates</p>
-          <button ion-button (click)='goToLocationsPage()' full>Find a location</button>
+            <ion-list *ngIf="favoriteEstates.length > 0">
+              <ion-item *ngFor="let estate of favoriteEstates" >
+                  <ion-thumbnail item-start>
+                    <img src={{estate.estate.image}}>
+                  </ion-thumbnail>
+                  <h2>Ref No.{{estate.estate.refNumber}}</h2>
+                  <p>{{estate.estate.type}}, {{estate.estate.bedrooms}} Bedrooms</p>
+                  <p>{{getLocation(estate.estate)}}, {{estate.estate.region}}</p>
+                  <button ion-button clear item-end (click)="favoriteTapped($event, estate.estate)">View</button>
+              </ion-item>
+            </ion-list>
+            <p>To save more estates, select a location, then you can save estates from thier estate overview page.</p>
+          <button ion-button (click)='goToLocationsPage()' full>
+              <ion-icon name="search"></ion-icon>
+            Find a location</button>
         </ion-card-content>
       </ion-card>
   <!--   <button ion-button secondary menuToggle>Toggle Menu</button> -->
