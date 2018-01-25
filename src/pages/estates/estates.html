@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Estates Page</ion-title>
+    <ion-title>Estates</ion-title>
   </ion-navbar>
 
   <ion-toolbar>
@@ -17,20 +17,16 @@
 
 
 <ion-content padding>
-  <ion-item-group *ngFor="let arr of estates">
-    <ion-item-divider color="secondary" >{{arr.region}}</ion-item-divider>
-      <button ion-item *ngFor="let estate of arr.locationEstates" (click)="itemTapped($event, estate)">
-
-          <ion-card>
-          <ion-card-header>
-            {{estate.type}}
-          </ion-card-header>
-          <ion-card-content>
-            <ion-img width="80" height="80" src='{{estate.image}}'></ion-img>
-          </ion-card-content>
-          </ion-card>
-
-        
-      </button>
-  </ion-item-group>
+    <ion-list *ngFor="let arr of estates">
+      <ion-item-divider color="secondary" >{{arr.region}}</ion-item-divider>
+      <ion-item *ngFor="let estate of arr.locationEstates" >
+          <ion-thumbnail item-start>
+            <img src={{estate.image}}>
+          </ion-thumbnail>
+          <h2>Ref No.{{estate.refNumber}}</h2>
+          <p>{{estate.type}}, {{estate.bedrooms}} Bedrooms</p>
+          <p>{{locationName}}, {{estate.region}}</p>
+          <button ion-button clear item-end (click)="itemTapped($event, estate)">View</button>
+      </ion-item>
+    </ion-list>
 </ion-content>

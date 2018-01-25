@@ -13,14 +13,15 @@ export class EstatesPage {
   private currentLocationEstates: any;
   private allEstateLocations: any;
   estates: any = [];
-  queryText: string = '';
+  locationName:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public estatesApi: EstatesApiProvider, public loadingController: LoadingController) {
   }
 
   ionViewDidLoad() {
-     
     let selectedLocation = this.navParams.data;
+
+    this.locationName = selectedLocation.name;
 
     let loader = this.loadingController.create({
       content: 'Getting data...'
@@ -44,18 +45,5 @@ export class EstatesPage {
 
   itemTapped($event, estate) {
     this.navCtrl.push(EstateHomePage , {estate: estate});
-  }
-
-  updateEstates(){
-    let queryTextLower = this.queryText.toLowerCase();
-    let filteredEstates = [];
-    _.forEach(this.allEstateLocations, td => {
-      let estates = _.filter(td.locationEstates, t => (<any>t).name.toLowerCase().includes(queryTextLower));
-      if (estates.length) {
-        filteredEstates.push({ locationName: td.locationName, locationEstates: estates });
-      }
-    });
-
-    this.estates = filteredEstates;
   }
 }
