@@ -15,12 +15,26 @@
 
 <ion-content padding>
     <ion-card>
-        <ion-card-header>
-          {{estate.type}}
-        </ion-card-header>
+        <img src="{{estate.image}}"/>
         <ion-card-content>
-          <ion-img width="80" height="80" src='{{estate.image}}'></ion-img>
+          <ion-card-title>
+            Save to my estates
+
+          </ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>{{estate.type}}</ion-col>
+              <ion-col col-6>Area: {{estate.area}} m2</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-6>{{estate.bedrooms}} Bedrooms</ion-col>
+              <ion-col col-6>Price: ${{estate.price}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12>{{estate.address}}</ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card-content>
-        </ion-card>
+      </ion-card>
 
 </ion-content>
