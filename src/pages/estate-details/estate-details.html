@@ -1,9 +1,3 @@
-<!--
-  Generated template for the EstateDetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -18,17 +12,21 @@
         <img src="{{estate.image}}"/>
         <ion-card-content>
           <ion-card-title>
-            Save to my estates
-
+              <button ion-button icon-start outline>
+                <ion-icon name="bookmark"></ion-icon>
+                  SAVE TO MY ESTATES
+              </button>
           </ion-card-title>
           <ion-grid>
             <ion-row>
               <ion-col col-6>{{estate.type}}</ion-col>
-              <ion-col col-6>Area: {{estate.area}} m2</ion-col>
+              <ion-col col-6>Area: {{estate.area}} m²</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col col-6>{{estate.bedrooms}} Bedrooms</ion-col>
-              <ion-col col-6>Price: ${{estate.price}}</ion-col>
+              <ion-col col-6>                 
+                <ion-badge item-end>{{estate.bedrooms}}</ion-badge>
+                Bedrooms</ion-col>
+              <ion-col col-6>Price: {{estate.price | currency}}</ion-col>
             </ion-row>
             <ion-row>
               <ion-col col-12>{{estate.address}}</ion-col>
