@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the EstateMapPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+declare var window: any;
 
 @IonicPage()
 @Component({
@@ -14,12 +8,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'estate-map.html',
 })
 export class EstateMapPage {
+  map: any = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EstateMapPage');
+    let estate = this.navParams.get('estate');
+
+    console.log(estate);
+    this.map = {
+      lat: estate.latitude,
+      lng: estate.longitude,
+      zoom: 12,
+      markerLabel: estate.address 
+    };
+
+    console.log(this.map);
   }
 
+  getDirections() { 
+    //window.location = `geo:${this.map.lat},${this.map.lng};u=35`; 
+  }
 }

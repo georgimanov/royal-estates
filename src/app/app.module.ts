@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
+import { AgmCoreModule } from '@agm/core';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -41,6 +42,9 @@ import { UserSettingsProvider } from '../providers/user-settings';
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBtLjPSymSciWcuNnvRfBYO5_nv9Cwma6A'
     })
   ],
   bootstrap: [IonicApp],
