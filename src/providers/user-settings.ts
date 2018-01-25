@@ -8,12 +8,11 @@ export class UserSettingsProvider {
   constructor(public storage: Storage, public events: Events) {
   }
 
-  favoriteEstate(estate, locationId, locationName) {
-    let item = { estate: estate, locationId: locationId, locationName: locationName };
+  favoriteEstate(estate) {
+    let item = { estate: estate};
     this.storage.set(estate.id.toString(), JSON.stringify(item)).then(() => {
       this.events.publish('favorites:changed');
     });
-    
   }
 
   unfavoriteEstate(estate) {

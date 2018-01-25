@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams, AlertController, ToastController  } from 'ionic-angular';
+import _ from 'lodash';
+import { UserSettingsProvider } from '../../providers/user-settings';
 
 @IonicPage()
 @Component({
@@ -8,17 +10,47 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EstateDetailsPage {
   estate: any = {}; 
-  isFollowing: boolean = false; 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  isFavorite: boolean = false; 
+  location: any = {};
+
+  constructor(public navParams: NavParams, public alertController: AlertController, public toastController: ToastController, public userSettings: UserSettingsProvider) {
   }
 
   ionViewDidLoad() {
     this.estate = this.navParams.get('estate');
-
-    console.log('ionViewDidLoad EstateDetailsPage');
+    this.userSettings
+      .isFavoriteEstate(this.estate.id)
+      .then(value => this.isFavorite = value);
   }
 
   toggleFavorites(){
-      this.isFollowing = !this.isFollowing;
+    if(this.isFavorite) {
+      let confirm = this.alertController.create({
+        title: "Unfavorite?",
+        message: "Are you sure you want to remove from saved estates?",
+        buttons: [
+          {
+            text: "Yes",
+            handler: () => {
+              this.isFavorite = false;
+              this.userSettings.unfavoriteEstate(this.estate);
+              let toast = this.toastController.create({
+                message: "You have unfavorited this estate!",
+                duration: 2000,
+                position: "bottom"
+              });
+              toast.present();
+            }
+          },
+          {
+            text: "No"
+          }
+        ]
+      });
+      confirm.present();
+    } else {
+      this.isFavorite = true;
+      this.userSettings.favoriteEstate(this.estate);
+    }
   }
 }

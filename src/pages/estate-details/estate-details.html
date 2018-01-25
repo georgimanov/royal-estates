@@ -12,11 +12,11 @@
         <img src="{{estate.image}}"/>
         <ion-card-content>
           <ion-card-title>
-              <button ion-button icon-start outline (click)="toggleFavorites()" *ngIf="!isFollowing">
+              <button ion-button icon-start outline (click)="toggleFavorites()" *ngIf="!isFavorite">
                 <ion-icon name="bookmark"></ion-icon>
                   SAVE TO MY ESTATES
               </button>
-              <button ion-button icon-start (click)="toggleFavorites()" *ngIf="isFollowing">
+              <button ion-button icon-start color="secondary" (click)="toggleFavorites()" *ngIf="isFavorite">
                   <ion-icon name="bookmark"></ion-icon>
                   SAVED TO MY ESTATES
               </button>
