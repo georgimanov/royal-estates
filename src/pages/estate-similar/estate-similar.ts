@@ -9,7 +9,7 @@ import _ from 'lodash';
   templateUrl: 'estate-similar.html',
 })
 export class EstateSimilarPage {
-  regionFilter = 'all';
+  regionFilter: string;
   allEstates: any[];
   allEstateLocations: any = [];
   dataEstateEstates: any = [];
@@ -24,30 +24,31 @@ export class EstateSimilarPage {
     this.estate = this.navParams.get('estate');
     this.locationId = this.navParams.get('locationId');
     this.locationName = this.navParams.get('locationName');
-    this.regionFilter = 'all';
   }
 
   ionViewDidLoad() {
-          let loader = this.loadingController.create({
-            content: 'Getting data...'
-          });
-          loader.present().then(() => {
-            this.estatesApi
-            .getLocationData(this.locationId)
-            .subscribe(data => {
-              this.allEstates = data.estates;
-              this.allEstateLocations =
-                _.chain(data.estates)
-                .groupBy('region')
-                .toPairs()
-                .map(item => _.zipObject(['region', 'locationEstates'], item))
-                .value();
-                this.dataEstateEstates = this.allEstateLocations;     
-                loader.dismiss();   
-            });
-          });
-
-      this.filterRegion(); 
+    this.regionFilter = 'all';
+      let loader = this.loadingController.create({
+        content: 'Getting data...'
+      });
+      loader.present().then(() => {
+        this.estatesApi
+        .getLocationData(this.locationId)
+        .subscribe(data => {
+          this.allEstates = data.estates;
+          this.allEstateLocations =
+            _.chain(data.estates)
+            .groupBy('region')
+            .toPairs()
+            .map(item => _.zipObject(['region', 'locationEstates'], item))
+            .value();
+            this.dataEstateEstates = this.allEstateLocations;     
+      
+            this.filterRegion(); 
+            
+            loader.dismiss();   
+        });
+      });
   }
 
   filterRegion(){
@@ -56,8 +57,11 @@ export class EstateSimilarPage {
     } else {
       this.estates = _.filter(this.allEstates, s => s.region === this.estate.region);
     }
-
-    console.log("Filter result:");
-    console.log(this.estates);
   }
+
+  myHeaderFn(estate, locationId, locationName){
+    // TODO: provide dividers  
+    return null;
+  }
+
 }

@@ -13,19 +13,12 @@
 </ion-header>
 
 <ion-content padding>
-    <!-- <ion-list [virtualScroll]="estates" >
-        
-        <ion-item *virtualItem="let estate">
-            <ion-row>
-                <ion-col>
-                    <h2 ion-text color="primary">{{estate.type}}</h2>
-                    <p>{{estate.region}}</p>
-                </ion-col>
-            </ion-row>
-            </ion-item>
-    </ion-list> -->
-
     <ion-list [virtualScroll]="estates" [approxItemHeight]="'132px'" >
+
+        <ion-item-divider color="secondary" *virtualHeader="let header">
+            {{header}}
+        </ion-item-divider>
+
         <ion-item *virtualItem="let estate" >
             <ion-thumbnail item-start>
               <img src={{estate.image}}>
@@ -36,7 +29,4 @@
             <button ion-button clear item-end (click)="itemTapped($event, estate, locationId, locationName)">View</button>
         </ion-item>
       </ion-list>
-
-
-
 </ion-content>
