@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-tabs>
-  <ion-tab tabTitle="Details" [rootParams]="{estate: estate}" [root]="estateDetailsTab" tabIcon="information-circle"></ion-tab>
-  <ion-tab tabTitle="Map" [rootParams]="{estate: estate}" [root]="estateMapTab" tabIcon="map"></ion-tab>
-  <ion-tab tabTitle="Similar" [rootParams]="{estate: estate}" [root]="estateSimilarTab" tabIcon="photos"></ion-tab>
+  <ion-tab tabTitle="Details" [rootParams]="{estate: estate, locationId: locationId, locationName: locationName}" [root]="estateDetailsTab" tabIcon="information-circle"></ion-tab>
+  <ion-tab tabTitle="Map" [rootParams]="{estate: estate, locationId: locationId, locationName: locationName}" [root]="estateMapTab" tabIcon="map"></ion-tab>
+  <ion-tab tabTitle="Similar" [rootParams]="{estate: estate, locationId: locationId, locationName: locationName}" [root]="estateSimilarTab" tabIcon="photos"></ion-tab>
 </ion-tabs>

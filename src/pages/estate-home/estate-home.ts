@@ -14,16 +14,17 @@ export class EstateHomePage {
   estateDetailsTab: any;
   estateMapTab: any;
   estateSimilarTab: any;
-
+  locationId: any;
+  locationName: string;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-      this.estate = this.navParams.get('estate');
       this.estateSimilarTab = EstateSimilarPage;
       this.estateDetailsTab = EstateDetailsPage;
       this.estateMapTab = EstateMapPage;
-  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EstateHomePage');
+      this.estate = this.navParams.get('estate');
+      this.locationId = this.navParams.get('locationId');
+      this.locationName = this.navParams.get('locationName');
   }
 
   goHome() {

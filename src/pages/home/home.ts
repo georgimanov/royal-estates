@@ -19,13 +19,17 @@ export class HomePage {
     this.navCtrl.push(LocationsPage);
   }
 
-  favoriteTapped($event, estate){
+  favoriteTapped($event, item){
     let loader = this.loadingController.create({
         content: 'Getting data...'
     });
     loader.present();
     loader.dismiss();
-    this.navCtrl.push(EstateHomePage, {estate: estate});
+
+    let estateHomeData = {estate: item.estate, locationId: item.locationId, locationName: item.locationName};
+    console.log(estateHomeData);
+
+    this.navCtrl.push(EstateHomePage, estateHomeData);
   }
 
   ionViewDidEnter(){

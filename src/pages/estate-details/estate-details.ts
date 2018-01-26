@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavParams, AlertController, ToastController  } from 'ionic-angular';
 import _ from 'lodash';
 import { UserSettingsProvider } from '../../providers/user-settings';
+import { EstatesApiProvider } from '../../providers/estates-api';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,7 @@ export class EstateDetailsPage {
   isFavorite: boolean = false; 
   location: any = {};
 
-  constructor(public navParams: NavParams, public alertController: AlertController, public toastController: ToastController, public userSettings: UserSettingsProvider) {
+  constructor(public navParams: NavParams, public alertController: AlertController, public toastController: ToastController, public userSettings: UserSettingsProvider, public estateApi: EstatesApiProvider) {
   }
 
   ionViewDidLoad() {
@@ -50,7 +51,11 @@ export class EstateDetailsPage {
       confirm.present();
     } else {
       this.isFavorite = true;
-      this.userSettings.favoriteEstate(this.estate);
+      let location = this.estateApi.getCurrentLocation();
+
+      console.log(location);
+
+      this.userSettings.favoriteEstate(this.estate, location.location.id, location.location.name);
     }
   }
 }

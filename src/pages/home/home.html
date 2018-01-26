@@ -30,14 +30,14 @@
         </ion-card-header>
         <ion-card-content>
             <ion-list *ngIf="favoriteEstates.length > 0">
-              <ion-item *ngFor="let estate of favoriteEstates" >
+              <ion-item *ngFor="let item of favoriteEstates" >
                   <ion-thumbnail item-start>
-                    <img src={{estate.estate.image}}>
+                    <img src={{item.estate.image}}>
                   </ion-thumbnail>
-                  <h2>Ref No.{{estate.estate.refNumber}}</h2>
-                  <p>{{estate.estate.type}}, {{estate.estate.bedrooms}} Bedrooms</p>
-                  <p>{{getLocation(estate.estate)}}, {{estate.estate.region}}</p>
-                  <button ion-button clear item-end (click)="favoriteTapped($event, estate.estate)">View</button>
+                  <h2>Ref No.{{item.estate.refNumber}}</h2>
+                  <p>{{item.estate.type}}, {{item.estate.bedrooms}} Bedrooms</p>
+                  <p>{{item.locationName}}, {{item.estate.region}}</p>
+                  <button ion-button clear item-end (click)="favoriteTapped($event, item)">View</button>
               </ion-item>
             </ion-list>
             <p>To save more estates, select a location, then you can save estates from thier estate overview page.</p>

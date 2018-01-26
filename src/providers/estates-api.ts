@@ -10,11 +10,11 @@ import 'rxjs/add/observable/of';
 @Injectable()
 export class EstatesApiProvider {
     private baseUrl = 'https://royal-estates-c3d59.firebaseio.com/';
+
     currentLocation: any = {};
     private locationData = {};
 
     constructor(public http: HttpClient){
-        console.log('Hello EstatesApiProvider Provider');
     }
 
     getLocations(): Observable<any> {

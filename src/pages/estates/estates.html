@@ -26,7 +26,7 @@
           <h2>Ref No.{{estate.refNumber}}</h2>
           <p>{{estate.type}}, {{estate.bedrooms}} Bedrooms</p>
           <p>{{locationName}}, {{estate.region}}</p>
-          <button ion-button clear item-end (click)="itemTapped($event, estate)">View</button>
+          <button ion-button clear item-end (click)="itemTapped($event, estate, locationId, locationName)">View</button>
       </ion-item>
     </ion-list>
 </ion-content>

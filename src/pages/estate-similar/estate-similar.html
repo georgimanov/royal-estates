@@ -1,19 +1,42 @@
 <ion-header>
-
-    <ion-navbar>
-      <ion-title>estate-similar</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
+    <ion-navbar></ion-navbar>
+    <ion-toolbar>
+        <ion-segment secondary [(ngModel)]="regionFilter" (ionChange)="filterRegion()">
+            <ion-segment-button value="region">
+                Region
+            </ion-segment-button>
+            <ion-segment-button default value="all">
+                All
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
 
 <ion-content padding>
- <!-- Segment in content -->
- <ion-segment [(ngModel)]="relationship" color="primary" (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="Region">
-      Region
-    </ion-segment-button>
-    <ion-segment-button value="All">
-      All
-    </ion-segment-button>
-  </ion-segment>
+    <!-- <ion-list [virtualScroll]="estates" >
+        
+        <ion-item *virtualItem="let estate">
+            <ion-row>
+                <ion-col>
+                    <h2 ion-text color="primary">{{estate.type}}</h2>
+                    <p>{{estate.region}}</p>
+                </ion-col>
+            </ion-row>
+            </ion-item>
+    </ion-list> -->
+
+    <ion-list [virtualScroll]="estates" [approxItemHeight]="'132px'" >
+        <ion-item *virtualItem="let estate" >
+            <ion-thumbnail item-start>
+              <img src={{estate.image}}>
+            </ion-thumbnail>
+            <h2>Ref No.{{estate.refNumber}}</h2>
+            <p>{{estate.type}}, {{estate.bedrooms}} Bedrooms</p>
+            <p>{{locationName}}, {{estate.region}}</p>
+            <button ion-button clear item-end (click)="itemTapped($event, estate, locationId, locationName)">View</button>
+        </ion-item>
+      </ion-list>
+
+
+
 </ion-content>

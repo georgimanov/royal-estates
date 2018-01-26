@@ -14,6 +14,7 @@ export class EstatesPage {
   private allEstateLocations: any;
   estates: any = [];
   locationName:string;
+  locationId: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public estatesApi: EstatesApiProvider, public loadingController: LoadingController) {
   }
@@ -22,6 +23,7 @@ export class EstatesPage {
     let selectedLocation = this.navParams.data;
 
     this.locationName = selectedLocation.name;
+    this.locationId = selectedLocation.id;
 
     let loader = this.loadingController.create({
       content: 'Getting data...'
@@ -40,10 +42,9 @@ export class EstatesPage {
 
       });
     });
-
   }
 
-  itemTapped($event, estate) {
-    this.navCtrl.push(EstateHomePage , {estate: estate});
+  itemTapped($event, estate, locationId, locationName) {
+    this.navCtrl.push(EstateHomePage , {estate: estate, locationId: locationId, locationName: locationName});
   }
 }
