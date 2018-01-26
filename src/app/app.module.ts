@@ -22,7 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { EstatesApiProvider } from '../providers/estates-api';
 import { UserSettingsProvider } from '../providers/user-settings';
 import { GoogleMaps } from '@ionic-native/google-maps';
- 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -46,10 +46,6 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     }),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyBtLjPSymSciWcuNnvRfBYO5_nv9Cwma6A"
-    })
-    ,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBtLjPSymSciWcuNnvRfBYO5_nv9Cwma6A'
     })
   ],
   bootstrap: [IonicApp],
